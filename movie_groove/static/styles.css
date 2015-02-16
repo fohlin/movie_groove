@@ -1,0 +1,92 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 130%;
+}
+
+.wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.index {
+    margin-top: 15%;
+}
+
+h1 {
+    font-weight: normal;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.searchform {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+.searchform input {
+    font-size: 14px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 200px;
+}
+
+.searchform input:focus {
+    border-color: #08c;
+}
+
+.searchform button {
+    cursor: pointer;
+    color: white;
+    background: #0088cc;
+    padding: 7px 25px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.searchform button:hover {
+    background: #0099e6;
+}
+
+.query {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+}
+
+.movie, .tracks {
+    float: left;
+    width: 440px;
+    padding: 20px;
+}
+
+.tracks ul {
+    padding: 0;
+    list-style: none;
+}
+
+.tracks li {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.tracks li .track-name {
+    font-size: 14px;
+}
+
+.album-name {
+    margin-left: 8px;
+}
+
+.track-name {
+    color: #08c;
+    text-decoration: none;
+}
+
+.track-name:hover {
+    text-decoration: underline;
+}

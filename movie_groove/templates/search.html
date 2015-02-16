@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Movie Groove</title>
+        {# Creates a valid URL for our stylesheet #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1><a href="/">Movie Groove</a></h1>
+
+            <form class="searchform" action="/search" method="GET">
+                <input type="text" name="q" value="{{ query }}">
+                <button type="submit">Search</button>
+            </form>
+
+            <!-- Print the query -->
+            {% if query %}
+            <p class="query">Showing results for: {{ query }}</p>
+            {% endif %}
+
+            <!-- Print the movie -->
+            {% if movie %}
+            <div class="movie">
+                <h2 class="movie-title">
+                    <a href="{{ movie.url }}">{{ movie.title }}</a>
+                    <small>({{ movie.year }})</small>
+                </h2>
+                <p class="meta">{{ movie.runtime }} - Rating: {{ movie.rating }}/10 from {{ movie.votes }} users</p>
+                <p class="plot">{{ movie.plot }}</p>
+                <ul>
+                    <li>Director: {{ movie.director }}</li>
+                    <li>Writers: {{ movie.writer }}</li>
+                    <li>Actors: {{ movie.actors }}</li>
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- Print the tracks -->
+            {% if tracks %}
+            <div class="tracks">
+                <h2>Tracks</h2>
+                <ul>
+                    {% for track in tracks %}
+                    <li>
+                        <a class="track-name" href="{{ track.href }}" target="_blank">{{ track.name }}</a> by {{ track.artist }}<br>
+                        <span class="album-name">{{ track.album_name }} ({{ track.album_year}})</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </body>
+</html>
