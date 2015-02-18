@@ -29,6 +29,10 @@ def search():
     # Render the search.html template with the movie and tracks
     return render_template('search.html', query=query, movie=movie, tracks=tracks)
 
+@app.route('/search_js')
+def search_js():
+    return render_template("search_js.html")
+
 # API documentation
 @app.route('/api/docs')
 def documentation():

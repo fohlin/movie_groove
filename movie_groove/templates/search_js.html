@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Movie Groove</title>
+        {# Creates a valid URL for our stylesheet #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1><a href="/">Movie Groove</a></h1>
+
+            <form class="searchform" action="/search" method="GET">
+                <input type="text" name="q" value="">
+                <button type="submit">Search</button>
+            </form>
+
+            <div id="movie">
+            	<h2 class="movie-title"></h2>
+				<p class="meta"></p>
+            </div>
+			<div id="tracks">
+				
+			</div>
+        </div>
+	<script type="text/javascript">
+		// Intead of hard coding domain
+		var ENDPOINT = window.location.origin + "/api/v1/search";
+		
+		// Event handler for form submission
+		function doSearch(){
+			var q = $("input[name=q]").val();
+			$.ajax({
+				url: ENDPOINT,
+				data: {q: q},
+				success: showResult,
+				dataType: "json"
+			});
+			// Form should not submit as normal
+			return false;
+		}
+		
+		// Event handler for successful API call
+		function showResult(response){
+			console.log(response);
+			
+			$(".movie-title").text(response.movie.title);
+			$(".meta").text(response.movie.plot)
+			$("#tracks").text(response.num_tracks + " tracks");
+			
+			// And so forth.....		
+			
+			$("#movie, #tracks").fadeIn(1000)
+		}
+		
+		// Setup initial state
+		$(function(){
+			$("form").submit(doSearch);
+			$("#movie, #tracks").hide();
+		});
+	</script>
+    </body>
+</html>
