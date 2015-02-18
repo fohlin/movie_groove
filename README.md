@@ -24,7 +24,7 @@ This project also includes a `requirements.txt` file, so you could:
 
 ### Starting the app
 
-Just run `movie_groove/app.py`!
+Just run `movie_groove/app.py`! Point your browser to `/` and `/api/docs`.
 
 
 ## See also
